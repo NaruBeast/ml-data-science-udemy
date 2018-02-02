@@ -21,7 +21,7 @@ from sklearn.svm import SVR
 regressor = SVR(kernel = 'rbf')
 regressor.fit(X,y)
 # Predicting a new result
-y_pred = sc_y.inverse_transform(regressor.predict(np.array([[6.5]])))
+y_pred = sc_y.inverse_transform(regressor.predict(sc_X.transform(np.array([[6.5]]))))
 
 # Visualising the SVR results
 plt.scatter(X, y, color = 'red')
