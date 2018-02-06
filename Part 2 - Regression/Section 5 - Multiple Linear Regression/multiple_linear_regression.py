@@ -29,3 +29,29 @@ y_pred = regressor.predict(X_test)
 """plt.scatter(X_train, y_train, color='red')
 plt.plot(X_train, regressor.predict(X_train), color='blue')
 plt.title('Multiple Linear Regression')"""
+
+import statsmodels.formula.api as sm
+X = np.append(arr = np.ones((50,1)).astype(int), values = X, axis=1)
+
+#Select the predictor with the highest p-value, remove it and remodel with the remaining
+#predictors until p-value>significance level
+X_opt = X[:, [0,1,2,3,4,5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+
+X_opt = X[:, [0,1,3,4,5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+
+X_opt = X[:, [0,3,4,5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+
+X_opt = X[:, [0,3,5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+
+#Final perfectly executed backward elimination. Does not guarantee optimal model performance
+X_opt = X[:, [0,3]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
