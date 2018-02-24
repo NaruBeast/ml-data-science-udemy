@@ -20,3 +20,8 @@ for i in range(0,1000):
     review = [ps.stem(word) for word in review if not word in set(stopwords.words('english'))]
     review = ' '.join(review)
     corpus.append(review)
+    
+from sklearn.feature_extraction.text import CountVectorizer
+cv = CountVectorizer()
+
+X = cv.fit_transform(corpus).toarray() 
