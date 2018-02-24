@@ -22,6 +22,6 @@ for i in range(0,1000):
     corpus.append(review)
     
 from sklearn.feature_extraction.text import CountVectorizer
-cv = CountVectorizer()
+cv = CountVectorizer(max_features=1500)
 
 X = cv.fit_transform(corpus).toarray() 
