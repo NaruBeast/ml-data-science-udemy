@@ -28,13 +28,10 @@ X = cv.fit_transform(corpus).toarray()
 y = dataset.iloc[:,1].values
 
 from sklearn.cross_validation import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
-
-from sklearn.preprocessing import StandardScaler
-sc = StandardScaler()
-X_train = sc.fit_transform(X_train)
-X_test = sc.transform(X_test)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=0)
 
 from sklearn.naive_bayes import GaussianNB
 classifier = GaussianNB()
 classifier.fit(X_train, y_train)
+
+y_pred = classifier.predict(y_test)
