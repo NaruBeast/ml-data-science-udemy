@@ -29,3 +29,12 @@ classifier.add(MaxPooling2D(pool_size=(2,2)))
 """
 #Flattening into a single feature vector
 classifier.add(Flatten())
+
+#Adding the hidden layer
+classifier.add(Dense(output_dim=128, activation='relu'))
+
+#Adding the output layer
+classifier.add(Dense(output_dim=1, activation='sigmoid'))
+
+#Compiling CNN
+classifier.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
