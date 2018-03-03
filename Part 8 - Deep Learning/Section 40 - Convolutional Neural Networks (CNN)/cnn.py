@@ -21,3 +21,11 @@ classifier = Sequential()
 classifier.add(Convolution2D(32, 3, 3, input_shape=(64,64,3), activation='relu'))
 #Pooling
 classifier.add(MaxPooling2D(pool_size=(2,2)))
+
+#Second Convolutional Layer - Optional
+"""
+classifier.add(Convolution2D(32, 3, 3, input_shape=(64,64,3), activation='relu'))
+classifier.add(MaxPooling2D(pool_size=(2,2)))
+"""
+#Flattening into a single feature vector
+classifier.add(Flatten())
