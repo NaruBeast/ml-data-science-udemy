@@ -19,3 +19,5 @@ classifier = Sequential()
 #First Convolutional Layer
 #Adding Layer
 classifier.add(Convolution2D(32, 3, 3, input_shape=(64,64,3), activation='relu'))
+#Pooling
+classifier.add(MaxPooling2D(pool_size=(2,2)))
